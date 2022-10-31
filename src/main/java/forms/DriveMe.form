@@ -92,7 +92,7 @@
                   <text value="Registration number"/>
                 </properties>
               </component>
-              <component id="d0e46" class="javax.swing.JTextField" binding="HF54432TextField" default-binding="true">
+              <component id="d0e46" class="javax.swing.JTextField" binding="registrationNField">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -102,7 +102,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="1916f" class="javax.swing.JTextField" binding="a4TextField" default-binding="true">
+              <component id="1916f" class="javax.swing.JTextField" binding="seatField">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -112,7 +112,7 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="2229b" class="javax.swing.JTextField" binding="autoTextField" default-binding="true">
+              <component id="2229b" class="javax.swing.JTextField" binding="transmissionTField">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -146,7 +146,7 @@
                   <text value="Engine type"/>
                 </properties>
               </component>
-              <component id="f3d45" class="javax.swing.JTextField" binding="dieselTextField" default-binding="true">
+              <component id="f3d45" class="javax.swing.JTextField" binding="engineField">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -156,12 +156,12 @@
                   <text value=""/>
                 </properties>
               </component>
-              <component id="8b34f" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="8b34f" class="javax.swing.JButton" binding="actuallyRegisterCar">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <text value="Register car"/>
                 </properties>
               </component>
             </children>

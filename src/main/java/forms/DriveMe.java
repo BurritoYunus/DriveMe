@@ -1,5 +1,7 @@
 package forms;
 
+import modules.CarRegistration;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,11 +16,11 @@ public class DriveMe extends JFrame{
     private JButton registerCar;
     private JButton rentCar;
     private JPanel registerCarPanel;
-    private JTextField HF54432TextField;
-    private JTextField a4TextField;
-    private JTextField autoTextField;
-    private JTextField dieselTextField;
-    private JButton button1;
+    private JTextField registrationNField;
+    private JTextField seatField;
+    private JTextField transmissionTField;
+    private JTextField engineField;
+    private JButton actuallyRegisterCar;
 
     public DriveMe(String title) {
         super(title);
@@ -29,6 +31,21 @@ public class DriveMe extends JFrame{
 
 
 
+
+
+
+        actuallyRegisterCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int registrationNumber = Integer.parseInt(registrationNField.getText());
+                int seats = Integer.parseInt(seatField.getText());
+                String transmissionType = transmissionTField.getText();
+                String engineType = engineField.getText();
+
+
+                CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
+            }
+        });
 
 
 
@@ -88,5 +105,6 @@ public class DriveMe extends JFrame{
             parentPanel.revalidate();
             }
         });
+
     }
 }

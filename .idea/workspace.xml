@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e952136c-5a14-4dd6-b813-9327a069622a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/forms/DriveMe.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/forms/DriveMe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backup forms/forms/AnimalRegister.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backup forms/forms/AnimalRegister.form.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backup forms/forms/AnimalRegister.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/forms/AnimalRegister.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/forms/AnimalRegister.form.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/forms/AnimalRegister.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/modules/BilRegistrering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modules/CarRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/forms/AnimalRegister.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/modules/BilRegistrering.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/modules/BilRegistrering.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forms/DriveMe.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forms/DriveMe.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forms/DriveMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forms/DriveMe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/modules/CarRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/modules/CarRegistration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
