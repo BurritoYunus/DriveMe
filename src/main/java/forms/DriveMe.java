@@ -1,10 +1,16 @@
 package forms;
 
+import com.google.gson.Gson;
 import modules.CarRegistration;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
+
 
 public class DriveMe extends JFrame{
     private JPanel mainPanel;
@@ -21,6 +27,12 @@ public class DriveMe extends JFrame{
     private JTextField transmissionTField;
     private JTextField engineField;
     private JButton actuallyRegisterCar;
+    private JPanel rentCarPanel;
+    private JList<CarRegistration> carJList;
+    private JButton checkCar;
+
+
+    private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
 
     public DriveMe(String title) {
         super(title);
@@ -28,6 +40,73 @@ public class DriveMe extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
+
+
+        carJList.setModel(carListModel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //==================================================Listeners==================================================
+
+        //userLogin
+        userLogin.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            parentPanel.removeAll();
+            parentPanel.add(userRentOrRegisterPanel);
+            parentPanel.repaint();
+            parentPanel.revalidate();
+        }
+    });
+
+
+
+
+        rentCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(rentCarPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+
+
+
+
+
+
+
+        //registerCar
+        registerCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            parentPanel.removeAll();
+            parentPanel.add(registerCarPanel);
+            parentPanel.repaint();
+            parentPanel.revalidate();
+            }
+        });
+
+
+
 
 
 
@@ -44,67 +123,31 @@ public class DriveMe extends JFrame{
 
 
                 CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
+
+                carListModel.addElement(registeredCar);
+
+                Gson gson = new Gson();
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //listeners
-
-        //userLogin
-        userLogin.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            parentPanel.removeAll();
-            parentPanel.add(userRentOrRegisterPanel);
-            parentPanel.repaint();
-            parentPanel.revalidate();
-        }
-    });
-
-        //registerCar
-        registerCar.addActionListener(new ActionListener() {
+        carJList.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-            parentPanel.removeAll();
-            parentPanel.add(registerCarPanel);
-            parentPanel.repaint();
-            parentPanel.revalidate();
+            public void valueChanged(ListSelectionEvent e) {
+
+                CarRegistration selectedCar = carJList.getSelectedValue();
+
+                registrationNField.setText(Integer.toString(selectedCar.getRegistrationNumber()));
+                seatField.setText(Integer.toString(selectedCar.getSeats()));
+                transmissionTField.setText(selectedCar.getTransmissionType());
+                engineField.setText(selectedCar.getEngineType());
+
             }
         });
-
     }
 }
