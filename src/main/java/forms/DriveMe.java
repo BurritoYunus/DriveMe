@@ -8,8 +8,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class DriveMe extends JFrame{
@@ -41,23 +41,21 @@ public class DriveMe extends JFrame{
     public DriveMe(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
 
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                exitProcedure();
+            }
+        });
 
 
         carJList.setModel(carListModel);
-
-
-
-
-
-
-
-
-
 
 
 
@@ -132,13 +130,10 @@ public class DriveMe extends JFrame{
 
                 carListModel.addElement(registeredCar);
 
-                Gson gson = new Gson();
-
-                String json = gson.toJson(registeredCar);
-
-
             }
         });
+
+
 
         carJList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -154,4 +149,10 @@ public class DriveMe extends JFrame{
             }
         });
     }
+
+    public void exitProcedure() {
+        this.dispose();
+        System.exit(0);
+    }
+
 }
