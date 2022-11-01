@@ -30,6 +30,9 @@ public class DriveMe extends JFrame{
     private JPanel rentCarPanel;
     private JList<CarRegistration> carJList;
     private JButton checkCar;
+    private JPanel paymentPanel;
+    private JButton vippsButton;
+    private JButton bankIDButton;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -76,7 +79,7 @@ public class DriveMe extends JFrame{
 
 
 
-
+        //rentCar
         rentCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,6 +130,8 @@ public class DriveMe extends JFrame{
                 carListModel.addElement(registeredCar);
 
                 Gson gson = new Gson();
+
+                String json = gson.toJson(registeredCar);
                 parentPanel.removeAll();
                 parentPanel.add(userRentOrRegisterPanel);
                 parentPanel.repaint();
