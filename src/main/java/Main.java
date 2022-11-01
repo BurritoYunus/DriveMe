@@ -13,7 +13,6 @@ public class Main {
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
         createPersonGUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        System.out.println(width+" "+height);
         createPersonGUI.setLocationRelativeTo(null);
         createPersonGUI.setResizable(false);
         createPersonGUI.setVisible(true);

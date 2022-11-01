@@ -33,6 +33,7 @@ public class DriveMe extends JFrame{
     private JPanel paymentPanel;
     private JButton vippsButton;
     private JButton bankIDButton;
+    private JList carJListss;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -134,10 +135,6 @@ public class DriveMe extends JFrame{
                 Gson gson = new Gson();
 
                 String json = gson.toJson(registeredCar);
-                parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
 
 
             }
