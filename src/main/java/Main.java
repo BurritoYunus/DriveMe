@@ -12,7 +12,7 @@ public class Main {
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
-        createPersonGUI.setSize(width, height);
+        createPersonGUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         System.out.println(width+" "+height);
         createPersonGUI.setLocationRelativeTo(null);
         createPersonGUI.setResizable(false);
