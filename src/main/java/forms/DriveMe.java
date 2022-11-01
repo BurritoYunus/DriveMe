@@ -8,8 +8,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 
@@ -31,6 +31,10 @@ public class DriveMe extends JFrame{
     private JPanel rentCarPanel;
     private JList<CarRegistration> carJList;
     private JButton checkCar;
+    private JPanel paymentPanel;
+    private JButton vippsButton;
+    private JButton bankIDButton;
+    private JList carJListss;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -38,21 +42,21 @@ public class DriveMe extends JFrame{
     public DriveMe(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
 
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                exitProcedure();
+            }
+        });
+
 
         carJList.setModel(carListModel);
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,7 +81,7 @@ public class DriveMe extends JFrame{
 
 
 
-
+        //rentCar
         rentCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,15 +131,10 @@ public class DriveMe extends JFrame{
 
                 carListModel.addElement(registeredCar);
 
-                Gson gson = new Gson();
-                parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-
-
             }
         });
+
+
 
         carJList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -151,4 +150,10 @@ public class DriveMe extends JFrame{
             }
         });
     }
+
+    public void exitProcedure() {
+        this.dispose();
+        System.exit(0);
+    }
+
 }
