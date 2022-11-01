@@ -16,6 +16,14 @@ public class CarRegistration {
     }
 
 
+    public boolean isRented() {
+        return isRented;
+    }
+
+    public void setRented(boolean rented) {
+        isRented = rented;
+    }
+
     public int getRegistrationNumber() {
         return registrationNumber;
     }
