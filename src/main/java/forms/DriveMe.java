@@ -35,6 +35,7 @@ public class DriveMe extends JFrame{
     private JButton vippsButton;
     private JButton bankIDButton;
     private JList carJListss;
+    private JButton mainMenuButton;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -150,6 +151,15 @@ public class DriveMe extends JFrame{
                 transmissionTField.setText(selectedCar.getTransmissionType());
                 engineField.setText(selectedCar.getEngineType());
 
+            }
+        });
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
             }
         });
     }
