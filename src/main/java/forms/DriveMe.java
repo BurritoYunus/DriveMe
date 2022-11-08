@@ -129,6 +129,9 @@ public class DriveMe extends JFrame{
 
                 CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
 
+                Gson gson = new Gson();
+                String json = gson.toJson(registeredCar);
+
                 carListModel.addElement(registeredCar);
 
             }

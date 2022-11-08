@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e952136c-5a14-4dd6-b813-9327a069622a" name="Changes" comment="" />
+    <list default="true" id="e952136c-5a14-4dd6-b813-9327a069622a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/forms/DriveMe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/forms/DriveMe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/forms/DriveMe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/forms/DriveMe.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,12 +48,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="231" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yunus/Desktop/SEG&quot;
+  }
+}</component>
   <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
