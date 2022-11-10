@@ -35,6 +35,7 @@ public class DriveMe extends JFrame{
     private JButton vippsButton;
     private JButton bankIDButton;
     private JList carJListss;
+    private JButton mainMenuButton;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -44,7 +45,6 @@ public class DriveMe extends JFrame{
 
         this.setContentPane(mainPanel);
         this.pack();
-
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 
@@ -57,13 +57,7 @@ public class DriveMe extends JFrame{
 
 
         carJList.setModel(carListModel);
-
-
-
-
-
-
-
+        carJListss.setModel(carListModel);
 
 
         //==================================================Listeners==================================================
@@ -78,7 +72,6 @@ public class DriveMe extends JFrame{
             parentPanel.revalidate();
         }
     });
-
 
 
         //rentCar
@@ -111,16 +104,12 @@ public class DriveMe extends JFrame{
         });
 
 
-
-
-
-
-
-
-
         actuallyRegisterCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+
+
                 int registrationNumber = Integer.parseInt(registrationNField.getText());
                 int seats = Integer.parseInt(seatField.getText());
                 String transmissionType = transmissionTField.getText();
@@ -129,7 +118,15 @@ public class DriveMe extends JFrame{
 
                 CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
 
+                Gson gson = new Gson();
+                String json = gson.toJson(registeredCar);
+
                 carListModel.addElement(registeredCar);
+                } catch (NumberFormatException numberFormatException) {
+                    JOptionPane.showMessageDialog(null, "You must input valid numbers.");
+                }
+
+
 
             }
         });
@@ -147,6 +144,15 @@ public class DriveMe extends JFrame{
                 transmissionTField.setText(selectedCar.getTransmissionType());
                 engineField.setText(selectedCar.getEngineType());
 
+            }
+        });
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
             }
         });
     }
