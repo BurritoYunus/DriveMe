@@ -36,6 +36,9 @@ public class DriveMe extends JFrame{
     private JButton bankIDButton;
     private JList carJListss;
     private JButton mainMenuButton;
+    private JComboBox comboBoxSeats;
+    private JComboBox comboBoxTType;
+    private JComboBox comboBoxEType;
 
 
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -109,19 +112,17 @@ public class DriveMe extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
 
+                    int registrationNumber = Integer.parseInt(registrationNField.getText());
+                    int selectedValueSeats = Integer.parseInt(comboBoxSeats.getSelectedItem().toString());
+                    String selectedValueTType = comboBoxTType.getSelectedItem().toString();
+                    String selectedValueEType = comboBoxEType.getSelectedItem().toString();
 
-                int registrationNumber = Integer.parseInt(registrationNField.getText());
-                int seats = Integer.parseInt(seatField.getText());
-                String transmissionType = transmissionTField.getText();
-                String engineType = engineField.getText();
+                    CarRegistration registeredCar = new CarRegistration(registrationNumber, selectedValueSeats, selectedValueTType, selectedValueEType);
 
+                    Gson gson = new Gson();
+                    String json = gson.toJson(registeredCar);
 
-                CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
-
-                Gson gson = new Gson();
-                String json = gson.toJson(registeredCar);
-
-                carListModel.addElement(registeredCar);
+                    carListModel.addElement(registeredCar);
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
                 }
@@ -155,6 +156,7 @@ public class DriveMe extends JFrame{
                 parentPanel.revalidate();
             }
         });
+
     }
 
     public void exitProcedure() {

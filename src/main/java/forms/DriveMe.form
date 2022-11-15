@@ -94,28 +94,6 @@
                   <toolTipText value="EH 54352"/>
                 </properties>
               </component>
-              <component id="1916f" class="javax.swing.JTextField" binding="seatField">
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                  <toolTipText value="5"/>
-                </properties>
-              </component>
-              <component id="2229b" class="javax.swing.JTextField" binding="transmissionTField">
-                <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                  <toolTipText value="Auto/Manual"/>
-                </properties>
-              </component>
               <component id="165c9" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -140,17 +118,6 @@
                   <text value="Engine type"/>
                 </properties>
               </component>
-              <component id="f3d45" class="javax.swing.JTextField" binding="engineField">
-                <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <text value=""/>
-                  <toolTipText value="Diesel/Electric"/>
-                </properties>
-              </component>
               <component id="8b34f" class="javax.swing.JButton" binding="actuallyRegisterCar">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -173,6 +140,45 @@
                 </constraints>
                 <properties>
                   <text value="Main menu"/>
+                </properties>
+              </component>
+              <component id="a5b76" class="javax.swing.JComboBox" binding="comboBoxSeats">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value="2"/>
+                    <item value="3"/>
+                    <item value="4"/>
+                    <item value="5"/>
+                    <item value="6"/>
+                    <item value="7"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="9400f" class="javax.swing.JComboBox" binding="comboBoxTType">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value="Manual"/>
+                    <item value="Auto"/>
+                  </model>
+                </properties>
+              </component>
+              <component id="ec96d" class="javax.swing.JComboBox" binding="comboBoxEType">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <model>
+                    <item value="Diesel"/>
+                    <item value="Electic"/>
+                    <item value="Hybrid"/>
+                    <item value="Petrol"/>
+                  </model>
                 </properties>
               </component>
             </children>

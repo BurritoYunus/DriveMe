@@ -5,14 +5,13 @@ public class CarRegistration {
     private int seats;
     private String transmissionType;
     private String engineType;
-    private boolean isRented;
+    private boolean isRented = false;
 
     public CarRegistration(int registrationNumber, int seats, String transmissionType, String engineType){
         this.registrationNumber = registrationNumber;
         this.seats = seats;
         this.transmissionType = transmissionType;
         this.engineType = engineType;
-        this.isRented = false;
     }
 
 
