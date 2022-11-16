@@ -1,13 +1,13 @@
 package modules;
 
 public class CarRegistration {
-    private int registrationNumber;
-    private int seats;
+    private String registrationNumber;
+    private String seats;
     private String transmissionType;
     private String engineType;
     private boolean isRented = false;
 
-    public CarRegistration(int registrationNumber, int seats, String transmissionType, String engineType){
+    public CarRegistration(String registrationNumber, String seats, String transmissionType, String engineType){
         this.registrationNumber = registrationNumber;
         this.seats = seats;
         this.transmissionType = transmissionType;
@@ -23,19 +23,19 @@ public class CarRegistration {
         isRented = rented;
     }
 
-    public int getRegistrationNumber() {
+    public String getRegistrationNumber() {
         return registrationNumber;
     }
 
-    public void setRegistrationNumber(int registrationNumber) {
+    public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
     }
 
-    public int getSeats() {
+    public String getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(String seats) {
         this.seats = seats;
     }
 
@@ -57,6 +57,6 @@ public class CarRegistration {
 
     @Override
     public String toString() {
-        return "Registration Number: " + getRegistrationNumber() + ", Seats: " + getSeats() + ", Transmission: " + getTransmissionType() + ", Engine: " + getEngineType();
+        return "Registration Number: " + getRegistrationNumber() + ", Seats: " + getSeats() + ", Transmission: " + getTransmissionType() + ", Engine: " + getEngineType() + ", is rented: " + isRented();
     }
 }

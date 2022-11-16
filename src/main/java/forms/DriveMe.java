@@ -2,6 +2,7 @@ package forms;
 
 import com.google.gson.Gson;
 import modules.CarRegistration;
+import modules.CarRepository;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -10,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import java.util.ArrayList;
 
 
 public class DriveMe extends JFrame{
@@ -34,14 +35,18 @@ public class DriveMe extends JFrame{
     private JPanel paymentPanel;
     private JButton vippsButton;
     private JButton bankIDButton;
-    private JList carJListss;
     private JButton mainMenuButton;
+
     private JComboBox comboBoxSeats;
     private JComboBox comboBoxTType;
     private JComboBox comboBoxEType;
+    private JButton mainMenuButtonFromRent;
+    private JCheckBox rented;
+    private JCheckBox notRented;
 
-
+    CarRepository testRepository = new CarRepository("test");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
+
 
     public DriveMe(String title) {
         super(title);
@@ -60,7 +65,6 @@ public class DriveMe extends JFrame{
 
 
         carJList.setModel(carListModel);
-        carJListss.setModel(carListModel);
 
 
         //==================================================Listeners==================================================
@@ -112,17 +116,28 @@ public class DriveMe extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
 
-                    int registrationNumber = Integer.parseInt(registrationNField.getText());
-                    int selectedValueSeats = Integer.parseInt(comboBoxSeats.getSelectedItem().toString());
+                    String registrationNumber = registrationNField.getText();
+                    String selectedValueSeats = comboBoxSeats.getSelectedItem().toString();
                     String selectedValueTType = comboBoxTType.getSelectedItem().toString();
                     String selectedValueEType = comboBoxEType.getSelectedItem().toString();
 
                     CarRegistration registeredCar = new CarRegistration(registrationNumber, selectedValueSeats, selectedValueTType, selectedValueEType);
+                    if (rented.isSelected()) {
+                        registeredCar.setRented(true);
+
+                    } else if (notRented.isSelected()) {
+                        registeredCar.setRented(false);
+                    }
 
                     Gson gson = new Gson();
                     String json = gson.toJson(registeredCar);
 
                     carListModel.addElement(registeredCar);
+                    JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registrationnumber: " + registeredCar.getRegistrationNumber());
+
+                    registrationNField.setText("");
+                    rented.setSelected(false);
+                    notRented.setSelected(false);
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
                 }
@@ -139,10 +154,10 @@ public class DriveMe extends JFrame{
             public void valueChanged(ListSelectionEvent e) {
 
                 CarRegistration selectedCar = carJList.getSelectedValue();
-
-                registrationNField.setText(Integer.toString(selectedCar.getRegistrationNumber()));
-                seatField.setText(Integer.toString(selectedCar.getSeats()));
+                //dette fungerer ikke
+                registrationNField.setText(selectedCar.getRegistrationNumber());
                 transmissionTField.setText(selectedCar.getTransmissionType());
+                seatField.setText(selectedCar.getSeats());
                 engineField.setText(selectedCar.getEngineType());
 
             }
@@ -157,7 +172,27 @@ public class DriveMe extends JFrame{
             }
         });
 
+        mainMenuButtonFromRent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+        checkCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarRegistration selectedCar = carJList.getSelectedValue();
+                selectedCar.setRented(true);
+                JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registrationnumber: " + selectedCar.getRegistrationNumber());
+            }
+        });
     }
+
+
+
 
     public void exitProcedure() {
         this.dispose();

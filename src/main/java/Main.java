@@ -10,11 +10,11 @@ public class Main {
 
     public static void main(String[] args) {
         DriveMe createAppGUI = new DriveMe("DriveMe");
-        createAppGUI.setSize(800, 400);
+        createAppGUI.setSize(800, 600);
         createAppGUI.setVisible(true);
 
-        int registrationNumber = 444;
-        int seats = 2;
+        String registrationNumber = "HF53344";
+        String seats = "2";
         String transmissionType = "hey";
         String engineType = "hey";
 
