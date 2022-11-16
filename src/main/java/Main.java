@@ -15,8 +15,8 @@ public class Main {
 
         String registrationNumber = "HF53344";
         String seats = "2";
-        String transmissionType = "hey";
-        String engineType = "hey";
+        String transmissionType = "Auto";
+        String engineType = "Diesel";
 
         CarRegistration registeredCar = new CarRegistration(registrationNumber, seats, transmissionType, engineType);
 
