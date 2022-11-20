@@ -16,6 +16,7 @@ public class CarRegistration {
 
 
     public boolean isRented() {
+
         return isRented;
     }
 
