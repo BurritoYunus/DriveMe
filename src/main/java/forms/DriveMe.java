@@ -152,16 +152,11 @@ public class DriveMe extends JFrame{
         carJList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-
                 CarRegistration selectedCar = carJList.getSelectedValue();
-                //dette fungerer ikke
                 registrationNField.setText(selectedCar.getRegistrationNumber());
-                transmissionTField.setText(selectedCar.getTransmissionType());
-                seatField.setText(selectedCar.getSeats());
-                engineField.setText(selectedCar.getEngineType());
-
             }
         });
+
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
