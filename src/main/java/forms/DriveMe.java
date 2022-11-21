@@ -195,6 +195,7 @@ public class DriveMe extends JFrame{
 
 
     public void exitProcedure() {
+
         this.dispose();
         System.exit(0);
     }
