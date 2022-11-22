@@ -61,7 +61,9 @@ public class DriveMe extends JFrame{
             BufferedReader br = new BufferedReader(
                     new FileReader("carList.json"));
             testRepository = gson.fromJson(br, CarRepository.class);
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
+            System.out.println("No save file to read from. It will be made when this application closes.");
+        }catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -218,7 +220,6 @@ public class DriveMe extends JFrame{
 
     public void exitProcedure( ) {
         String json = gson.toJson(testRepository);
-        System.out.println("closing app");
         try {
             FileWriter writer = new FileWriter("carList.json");
             writer.write(json);
