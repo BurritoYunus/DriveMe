@@ -19,4 +19,31 @@ public class CarRepository {
         this.carList = carArrayList;
     }
 
+    public void addCar(CarRegistration car){
+        boolean exists = false;
+        for (CarRegistration i : carList){
+            if (car.getRegistrationNumber().equals(i.getRegistrationNumber())){
+                exists = true;
+                break;
+            }
+        }
+        if (!exists){
+            System.out.println("Adding car " + car.getRegistrationNumber());
+            this.carList.add(car);
+        }
+        else{
+            System.out.println("Car " + car.getRegistrationNumber() + " Already exists");
+        }
+    }
+
+    public void removeCar(CarRegistration car){
+        if (carList.contains(car)){
+            System.out.println("Removed car " + car.getRegistrationNumber());
+            carList.remove(car);
+        }
+        else{
+            System.out.println("Could not find car " + car.getRegistrationNumber() + " in CarArrayList");
+        }
+    }
+
 }

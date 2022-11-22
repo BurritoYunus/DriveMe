@@ -11,6 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -47,6 +51,8 @@ public class DriveMe extends JFrame{
     CarRepository testRepository = new CarRepository("test");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
 
+    Gson gson = new Gson();
+
 
     public DriveMe(String title) {
         super(title);
@@ -54,6 +60,15 @@ public class DriveMe extends JFrame{
         this.setContentPane(mainPanel);
         this.pack();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        try {
+            BufferedReader br = new BufferedReader(
+                    new FileReader("test.json"));
+            CarRepository testRepository = gson.fromJson(br, CarRepository.class);
+
+            System.out.println(testRepository.getCarArrayList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         this.addWindowListener(new WindowAdapter() {
@@ -129,9 +144,7 @@ public class DriveMe extends JFrame{
                         registeredCar.setRented(false);
                     }
 
-                    Gson gson = new Gson();
-                    String json = gson.toJson(registeredCar);
-
+                    testRepository.addCar(registeredCar);
                     carListModel.addElement(registeredCar);
                     JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registrationnumber: " + registeredCar.getRegistrationNumber());
 
@@ -189,8 +202,17 @@ public class DriveMe extends JFrame{
 
 
 
-    public void exitProcedure() {
-
+    public void exitProcedure( ) {
+        String json = gson.toJson(testRepository);
+        System.out.println("closing app");
+        try {
+            FileWriter writer = new FileWriter("carList.json");
+            writer.write(json);
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         this.dispose();
         System.exit(0);
     }
