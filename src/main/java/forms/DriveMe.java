@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.io.*;
+import java.util.ArrayList;
 
 
 public class DriveMe extends JFrame{
@@ -41,7 +42,7 @@ public class DriveMe extends JFrame{
     private JCheckBox rented;
     private JCheckBox notRented;
     private JButton browseAllCarsButton;
-    private JPanel allCars;
+    private JPanel allCarsPanel;
     private JList allCarsList;
     private JButton mainMenuButtonFromAllCars;
 
@@ -49,6 +50,13 @@ public class DriveMe extends JFrame{
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
 
     Gson gson = new Gson();
+
+    private void all_Cars_List(ArrayList<CarRegistration> carList) {
+        carListModel.clear();
+        for (CarRegistration i : carList) {
+            carListModel.addElement(i);
+        }
+    }
 
 
     public DriveMe(String title) {
@@ -77,6 +85,7 @@ public class DriveMe extends JFrame{
 
 
         carJList.setModel(carListModel);
+        allCarsList.setModel(carListModel);
 
 
         //==================================================Listeners==================================================
@@ -101,6 +110,8 @@ public class DriveMe extends JFrame{
                 parentPanel.add(rentCarPanel);
                 parentPanel.repaint();
                 parentPanel.revalidate();
+
+                all_Cars_List(testRepository.getAllAvailableCars());
             }
         });
 
@@ -162,6 +173,8 @@ public class DriveMe extends JFrame{
             }
         });
 
+
+
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -202,13 +215,16 @@ public class DriveMe extends JFrame{
                 JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registrationnumber: " + selectedCar.getRegistrationNumber());
             }
         });
+
         browseAllCarsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.add(allCarsPanel);
                 parentPanel.repaint();
                 parentPanel.revalidate();
+
+                all_Cars_List(testRepository.getCarArrayList());
             }
         });
 

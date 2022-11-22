@@ -1,1 +1,1 @@
-{"repositoryName":"CarList","carList":[]}
+{"repositoryName":"CarList","carList":[{"registrationNumber":"fdgsfgsfg","seats":"2","transmissionType":"Manual","engineType":"Diesel","isRented":false},{"registrationNumber":"dfgsdfgsd","seats":"2","transmissionType":"Manual","engineType":"Diesel","isRented":false},{"registrationNumber":"dfsgdgd","seats":"2","transmissionType":"Manual","engineType":"Diesel","isRented":true},{"registrationNumber":"sdgfgsdfg","seats":"2","transmissionType":"Manual","engineType":"Diesel","isRented":true}]}

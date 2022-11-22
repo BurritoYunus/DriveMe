@@ -46,4 +46,14 @@ public class CarRepository {
         }
     }
 
+    public ArrayList<CarRegistration> getAllAvailableCars(){
+        ArrayList<CarRegistration> allAvailableCars = new ArrayList<>();
+        for (CarRegistration i : carList){
+            if (!i.isRented()){
+                allAvailableCars.add(i);
+            }
+        }
+        return allAvailableCars;
+    }
+
 }
