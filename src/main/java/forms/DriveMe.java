@@ -23,16 +23,10 @@ public class DriveMe extends JFrame{
     private JButton rentCar;
     private JPanel registerCarPanel;
     private JTextField registrationNField;
-    private JTextField seatField;
-    private JTextField transmissionTField;
-    private JTextField engineField;
     private JButton actuallyRegisterCar;
     private JPanel rentCarPanel;
     private JList<CarRegistration> carJList;
     private JButton checkCar;
-    private JPanel paymentPanel;
-    private JButton vippsButton;
-    private JButton bankIDButton;
     private JButton mainMenuButton;
 
     private JComboBox comboBoxSeats;
@@ -165,16 +159,6 @@ public class DriveMe extends JFrame{
 
 
 
-        carJList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                CarRegistration selectedCar = carJList.getSelectedValue();
-                registrationNField.setText(selectedCar.getRegistrationNumber());
-            }
-        });
-
-
-
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -213,6 +197,8 @@ public class DriveMe extends JFrame{
                 CarRegistration selectedCar = carJList.getSelectedValue();
                 selectedCar.setRented(true);
                 JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registrationnumber: " + selectedCar.getRegistrationNumber());
+
+                all_Cars_List(testRepository.getAllAvailableCars());
             }
         });
 
