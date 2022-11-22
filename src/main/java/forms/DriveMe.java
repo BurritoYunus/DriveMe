@@ -7,15 +7,8 @@ import modules.CarRepository;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.io.*;
 
 
 public class DriveMe extends JFrame{
@@ -47,8 +40,12 @@ public class DriveMe extends JFrame{
     private JButton mainMenuButtonFromRent;
     private JCheckBox rented;
     private JCheckBox notRented;
+    private JButton browseAllCarsButton;
+    private JPanel allCars;
+    private JList allCarsList;
+    private JButton mainMenuButtonFromAllCars;
 
-    CarRepository testRepository = new CarRepository("test");
+    CarRepository testRepository = new CarRepository("CarList");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
 
     Gson gson = new Gson();
@@ -62,10 +59,8 @@ public class DriveMe extends JFrame{
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         try {
             BufferedReader br = new BufferedReader(
-                    new FileReader("test.json"));
-            CarRepository testRepository = gson.fromJson(br, CarRepository.class);
-
-            System.out.println(testRepository.getCarArrayList());
+                    new FileReader("carList.json"));
+            testRepository = gson.fromJson(br, CarRepository.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,11 +101,6 @@ public class DriveMe extends JFrame{
                 parentPanel.revalidate();
             }
         });
-
-
-
-
-
 
 
 
@@ -189,6 +179,19 @@ public class DriveMe extends JFrame{
                 parentPanel.revalidate();
             }
         });
+
+        mainMenuButtonFromAllCars.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+            }
+        });
+
+
         checkCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -197,7 +200,18 @@ public class DriveMe extends JFrame{
                 JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registrationnumber: " + selectedCar.getRegistrationNumber());
             }
         });
+        browseAllCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
     }
+
 
 
 
