@@ -5,8 +5,6 @@ import modules.CarRegistration;
 import modules.CarRepository;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -39,6 +37,10 @@ public class DriveMe extends JFrame{
     private JPanel allCarsPanel;
     private JList allCarsList;
     private JButton mainMenuButtonFromAllCars;
+    private JPanel adminListPanel;
+    private JList adminList;
+    private JButton logOutFromAdmin;
+    private JButton editCarButton;
 
     CarRepository testRepository = new CarRepository("CarList");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -80,6 +82,7 @@ public class DriveMe extends JFrame{
 
         carJList.setModel(carListModel);
         allCarsList.setModel(carListModel);
+        adminList.setModel(carListModel);
 
 
         //==================================================Listeners==================================================
@@ -214,6 +217,15 @@ public class DriveMe extends JFrame{
             }
         });
 
+        logOutFromAdmin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(loginPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
     }
 
 
