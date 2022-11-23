@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CarRepository {
     private String repositoryName;
-
     private ArrayList<CarRegistration> carList = new ArrayList<>();
 
     public CarRepository(String repositoryName) {
@@ -13,10 +12,6 @@ public class CarRepository {
 
     public ArrayList<CarRegistration> getCarArrayList() {
         return carList;
-    }
-
-    public void setCarArrayList(ArrayList<CarRegistration> carArrayList) {
-        this.carList = carArrayList;
     }
 
     public void addCar(CarRegistration car){
@@ -32,7 +27,7 @@ public class CarRepository {
             this.carList.add(car);
         }
         else{
-            System.out.println("Car " + car.getRegistrationNumber() + " Already exists");
+            System.out.println("The car with the registration number: " + car.getRegistrationNumber() + " already exists");
         }
     }
 
@@ -42,7 +37,7 @@ public class CarRepository {
             carList.remove(car);
         }
         else{
-            System.out.println("Could not find car " + car.getRegistrationNumber() + " in CarArrayList");
+            System.out.println("Could not find the car with the registration number " + car.getRegistrationNumber() + " in the car database.");
         }
     }
 

@@ -55,16 +55,7 @@ public class DriveMe extends JFrame{
 
     CarRepository testRepository = new CarRepository("CarList");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
-
     Gson gson = new Gson();
-
-    private void all_Cars_List(ArrayList<CarRegistration> carList) {
-        carListModel.clear();
-        for (CarRegistration i : carList) {
-            carListModel.addElement(i);
-        }
-    }
-
 
     public DriveMe(String title) {
         super(title);
@@ -82,7 +73,6 @@ public class DriveMe extends JFrame{
             e.printStackTrace();
         }
 
-
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent event) {
@@ -90,53 +80,12 @@ public class DriveMe extends JFrame{
             }
         });
 
-
         carJList.setModel(carListModel);
         allCarsList.setModel(carListModel);
         adminList.setModel(carListModel);
 
 
         //==================================================Listeners==================================================
-
-        //userLogin
-        userLogin.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            parentPanel.removeAll();
-            parentPanel.add(userRentOrRegisterPanel);
-            parentPanel.repaint();
-            parentPanel.revalidate();
-        }
-    });
-
-
-        //rentCar
-        rentCar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(rentCarPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-
-                all_Cars_List(testRepository.getAllAvailableCars());
-            }
-        });
-
-
-
-        //registerCar
-        registerCar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            parentPanel.removeAll();
-            parentPanel.add(registerCarPanel);
-            parentPanel.repaint();
-            parentPanel.revalidate();
-            }
-        });
-
-
         actuallyRegisterCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,7 +106,7 @@ public class DriveMe extends JFrame{
 
                     testRepository.addCar(registeredCar);
                     carListModel.addElement(registeredCar);
-                    JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registrationnumber: " + registeredCar.getRegistrationNumber());
+                    JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
 
                     registrationNField.setText("");
                     rented.setSelected(false);
@@ -165,88 +114,21 @@ public class DriveMe extends JFrame{
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
                 }
-
-
-
             }
         });
-
-
-
-        mainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
-
-        mainMenuButtonFromRent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
-
-        mainMenuButtonFromAllCars.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(userRentOrRegisterPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-
-            }
-        });
-
 
         checkCar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarRegistration selectedCar = carJList.getSelectedValue();
                 selectedCar.setRented(true);
-                JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registrationnumber: " + selectedCar.getRegistrationNumber());
+                JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registration number: " + selectedCar.getRegistrationNumber());
 
                 all_Cars_List(testRepository.getAllAvailableCars());
             }
         });
 
-        browseAllCarsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(allCarsPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
 
-                all_Cars_List(testRepository.getCarArrayList());
-            }
-        });
-
-        logOutFromAdmin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(loginPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
-
-        goBackButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(adminListPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
         adminLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -288,15 +170,7 @@ public class DriveMe extends JFrame{
                 all_Cars_List(testRepository.getCarArrayList());
             }
         });
-        logOutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(loginPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
+
         editCarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -325,7 +199,7 @@ public class DriveMe extends JFrame{
                     selectedCar.setRented(false);
                 }
 
-                JOptionPane.showMessageDialog(editCarsPanel, "Successfully changed the cars information from:\n" +
+                JOptionPane.showMessageDialog(editCarsPanel, "Successfully changed the car's information from:\n" +
                         "Registration number: " + currentRegistrationNumber + ", Seats: " + currentSeats + ", Transmission type: " +
                         currentTransmissionType + ", Engine type: " + currentEngineType +
                         "\n To: \n" +
@@ -338,11 +212,122 @@ public class DriveMe extends JFrame{
                 parentPanel.revalidate();
             }
         });
+
+        //userLogin
+        userLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+
+        //rentCar
+        rentCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(rentCarPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+                all_Cars_List(testRepository.getAllAvailableCars());
+            }
+        });
+
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(loginPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+        browseAllCarsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(allCarsPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+                all_Cars_List(testRepository.getCarArrayList());
+            }
+        });
+
+        logOutFromAdmin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(loginPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        goBackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(adminListPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        //registerCar
+        registerCar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(registerCarPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        mainMenuButtonFromRent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        mainMenuButtonFromAllCars.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(userRentOrRegisterPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+            }
+        });
     }
 
-
-
-
+    private void all_Cars_List(ArrayList<CarRegistration> carList) {
+        carListModel.clear();
+        for (CarRegistration i : carList) {
+            carListModel.addElement(i);
+        }
+    }
 
     public void exitProcedure( ) {
         String json = gson.toJson(testRepository);
