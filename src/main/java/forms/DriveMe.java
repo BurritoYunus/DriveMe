@@ -40,7 +40,18 @@ public class DriveMe extends JFrame{
     private JPanel adminListPanel;
     private JList adminList;
     private JButton logOutFromAdmin;
+    private JButton editCarPageButton;
+    private JPanel editCarsPanel;
+    private JTextField registrationNFieldEdit;
+    private JTextField seatsFieldEdit;
+    private JTextField tranmissionTFieldEdit;
+    private JTextField engineTFieldEdit;
+    private JButton goBackButton;
     private JButton editCarButton;
+    private JButton deleteCarButton;
+    private JCheckBox rentedCheckBox;
+    private JCheckBox notRentedCheckBox;
+    private JButton logOutButton;
 
     CarRepository testRepository = new CarRepository("CarList");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -222,6 +233,107 @@ public class DriveMe extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 parentPanel.removeAll();
                 parentPanel.add(loginPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        goBackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(adminListPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+        adminLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(adminListPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+                all_Cars_List(testRepository.getCarArrayList());
+            }
+        });
+        editCarPageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(editCarsPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+                CarRegistration selectedCar = (CarRegistration) adminList.getSelectedValue();
+                registrationNFieldEdit.setText(selectedCar.getRegistrationNumber());
+                seatsFieldEdit.setText(selectedCar.getSeats());
+                tranmissionTFieldEdit.setText(selectedCar.getTransmissionType());
+                engineTFieldEdit.setText(selectedCar.getEngineType());
+            }
+        });
+
+
+        deleteCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarRegistration selectedCar = (CarRegistration) adminList.getSelectedValue();
+                testRepository.removeCar(selectedCar);
+                carListModel.removeElement(selectedCar);
+
+                JOptionPane.showMessageDialog(adminListPanel, "Successfully removed car with the registration number:" + selectedCar.getRegistrationNumber());
+
+
+                all_Cars_List(testRepository.getCarArrayList());
+            }
+        });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(loginPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+        editCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarRegistration selectedCar = (CarRegistration) adminList.getSelectedValue();
+
+                String currentRegistrationNumber = selectedCar.getRegistrationNumber();
+                String currentSeats = selectedCar.getSeats();
+                String currentTransmissionType = selectedCar.getTransmissionType();
+                String currentEngineType = selectedCar.getEngineType();
+
+                String registrationNumber = registrationNFieldEdit.getText();
+                String seats = seatsFieldEdit.getText();
+                String transmissionType = tranmissionTFieldEdit.getText();
+                String engineType = engineTFieldEdit.getText();
+
+                selectedCar.setRegistrationNumber(registrationNumber);
+                selectedCar.setSeats(seats);
+                selectedCar.setTransmissionType(transmissionType);
+                selectedCar.setEngineType(engineType);
+
+
+                if (rentedCheckBox.isSelected()) {
+                    selectedCar.setRented(true);
+
+                } else if (notRentedCheckBox.isSelected()) {
+                    selectedCar.setRented(false);
+                }
+
+                JOptionPane.showMessageDialog(editCarsPanel, "Successfully changed the cars information from:\n" +
+                        "Registration number: " + currentRegistrationNumber + ", Seats: " + currentSeats + ", Transmission type: " +
+                        currentTransmissionType + ", Engine type: " + currentEngineType +
+                        "\n To: \n" +
+                        "Registration number: " + selectedCar.getRegistrationNumber() + ", Seats: " + selectedCar.getSeats() + ", Transmission type: " +
+                        selectedCar.getTransmissionType() + ", Engine type: " + selectedCar.getEngineType());
+
+                parentPanel.removeAll();
+                parentPanel.add(adminListPanel);
                 parentPanel.repaint();
                 parentPanel.revalidate();
             }
