@@ -16,6 +16,7 @@ public class CarRegistration {
 
 
     public boolean isRented() {
+
         return isRented;
     }
 
@@ -57,6 +58,6 @@ public class CarRegistration {
 
     @Override
     public String toString() {
-        return "Registration Number: " + getRegistrationNumber() + ", Seats: " + getSeats() + ", Transmission: " + getTransmissionType() + ", Engine: " + getEngineType() + ", is rented: " + isRented();
+        return "Registration Number: " + getRegistrationNumber() + ", Seats: " + getSeats() + ", Transmission: " + getTransmissionType() + ", Engine: " + getEngineType() + ", is rented: " + isRented() + "\n";
     }
 }
