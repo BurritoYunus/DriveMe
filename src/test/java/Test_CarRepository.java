@@ -82,4 +82,20 @@ public class Test_CarRepository {
         assertFalse(testRepository.getAllAvailableCars().contains(car1));
         assertTrue(testRepository.getAllAvailableCars().contains(car2));
     }
+
+    @Test
+    public void getCarArrayList_prints_all_cars(){
+        CarRepository testRepository = new CarRepository("test_repository.json");
+        CarRegistration car1 = new CarRegistration("PG46886", "2", "Auto", "Petrol");
+        CarRegistration car2 = new CarRegistration("65GHDG3", "6", "Manual", "Diesel");
+        CarRegistration car3 = new CarRegistration("6HFGFHF", "6", "Manual", "Diesel");
+        car1.setRented(true);
+        car3.setRented(true);
+        testRepository.addCar(car1);
+        testRepository.addCar(car2);
+        testRepository.addCar(car3);
+        assertTrue(testRepository.getCarArrayList().contains(car1));
+        assertTrue(testRepository.getCarArrayList().contains(car2));
+        assertTrue(testRepository.getCarArrayList().contains(car3));
+    }
 }
