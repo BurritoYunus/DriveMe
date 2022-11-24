@@ -115,6 +115,7 @@ public class DriveMe extends JFrame{
                     registrationNField.setText("");
                     rented.setSelected(false);
                     notRented.setSelected(false);
+
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
                 }
