@@ -18,4 +18,6 @@ public class Test_CarRegister {
         rentedCar.setRented(true);
         assertTrue(rentedCar.isRented());
     }
+
+
 }

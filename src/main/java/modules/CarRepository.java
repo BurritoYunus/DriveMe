@@ -6,6 +6,8 @@ public class CarRepository {
     private String repositoryName;
     private ArrayList<CarRegistration> carList = new ArrayList<>();
 
+   // private final CarListFileHandler carListFileHandler = new CarListFileHandler();
+
     public CarRepository(String repositoryName) {
         this.repositoryName = repositoryName;
     }
@@ -51,4 +53,11 @@ public class CarRepository {
         return allAvailableCars;
     }
 
+    /*public void SaveCarsToJSON() {
+        carListFileHandler.writeListToFile(this.carRepository, repositoryName);
+    }
+
+    /*public void readFromJSON(){
+        carList = carListFileHandler.readFromFile(repositoryName);
+    }*/
 }
