@@ -24,7 +24,7 @@ public class DriveMe extends JFrame{
     private JButton actuallyRegisterCar;
     private JPanel rentCarPanel;
     private JList<CarRegistration> carJList;
-    private JButton checkCar;
+    private JButton rentCarWithVipps;
     private JButton mainMenuButton;
 
     private JComboBox comboBoxSeats;
@@ -52,6 +52,7 @@ public class DriveMe extends JFrame{
     private JCheckBox rentedCheckBox;
     private JCheckBox notRentedCheckBox;
     private JButton logOutButton;
+    private JButton rentCarWithCard;
 
     CarRepository carRepository = new CarRepository("carList.json");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
@@ -122,12 +123,23 @@ public class DriveMe extends JFrame{
             }
         });
 
-        checkCar.addActionListener(new ActionListener() {
+        rentCarWithVipps.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarRegistration selectedCar = carJList.getSelectedValue();
                 selectedCar.setRented(true);
-                JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registration number: " + selectedCar.getRegistrationNumber());
+                JOptionPane.showMessageDialog(rentCarPanel, "You have successfully rented the car with the registration number: " + selectedCar.getRegistrationNumber() + ", with vipps");
+
+                all_Cars_List(carRepository.getAllAvailableCars());
+            }
+        });
+
+        rentCarWithCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarRegistration selectedCar = carJList.getSelectedValue();
+                selectedCar.setRented(true);
+                JOptionPane.showMessageDialog(rentCarPanel, "You have successfully rented the car with the registration number: " + selectedCar.getRegistrationNumber() + ", with a card");
 
                 all_Cars_List(carRepository.getAllAvailableCars());
             }
