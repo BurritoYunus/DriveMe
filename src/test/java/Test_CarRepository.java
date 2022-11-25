@@ -37,14 +37,7 @@ public class Test_CarRepository {
 
         Gson gson = new Gson();
         String json = gson.toJson(testRepository);
-        try {
-            FileWriter writer = new FileWriter("test_repository.json");
-            writer.write(json);
-            writer.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        testRepository.writeToJson(json);
 
         CarRepository testRepostory2 = new CarRepository("test_repository2.json");
         try {
@@ -53,8 +46,6 @@ public class Test_CarRepository {
             testRepostory2 = gson.fromJson(br, CarRepository.class);
         } catch (FileNotFoundException e) {
             System.out.println("No save file to read from. Please make sure you're trying to read an existing file.");
-        }catch (IOException e) {
-            e.printStackTrace();
         }
         assertFalse(testRepostory2.getCarArrayList().isEmpty());
         assertSame(testRepostory2.getCarArrayList().get(0).getClass(), CarRegistration.class);

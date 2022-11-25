@@ -59,7 +59,7 @@ public class DriveMe extends JFrame{
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
     GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
     Gson gson = gsonBuilder.create();
-    File file = new File("carList.json");
+    File file = new File(carRepository.getRepositoryName());
 
     public DriveMe(String title) {
         super(title);
@@ -94,19 +94,23 @@ public class DriveMe extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     String registrationNumber = registrationNField.getText();
                     String selectedValueSeats = comboBoxSeats.getSelectedItem().toString();
                     String selectedValueTType = comboBoxTType.getSelectedItem().toString();
                     String selectedValueEType = comboBoxEType.getSelectedItem().toString();
 
                     CarRegistration registeredCar = new CarRegistration(registrationNumber, selectedValueSeats, selectedValueTType, selectedValueEType);
+
+
+
                     if (rented.isSelected()) {
                         registeredCar.setRented(true);
 
                     } else if (notRented.isSelected()) {
                         registeredCar.setRented(false);
                     }
+
+
 
                     carRepository.addCar(registeredCar);
                     carListModel.addElement(registeredCar);
@@ -346,7 +350,7 @@ public class DriveMe extends JFrame{
     }
 
     public void exitProcedure( ) {
-        String json = gson.toJson(carRepository);
+       /* String json = gson.toJson(carRepository);
         try {
             FileWriter writer = new FileWriter("carList.json");
             writer.write(json);
@@ -354,7 +358,9 @@ public class DriveMe extends JFrame{
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+        String json = gson.toJson(carRepository);
+        carRepository.writeToJson(json);
         this.dispose();
         System.exit(0);
     }

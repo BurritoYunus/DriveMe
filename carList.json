@@ -7,6 +7,27 @@
       "transmissionType": "Manual",
       "engineType": "Diesel",
       "isRented": true
+    },
+    {
+      "registrationNumber": "tret",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    },
+    {
+      "registrationNumber": "sdfgsdfg",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    },
+    {
+      "registrationNumber": "",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
     }
   ]
 }
