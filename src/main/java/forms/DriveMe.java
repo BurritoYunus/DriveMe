@@ -73,8 +73,6 @@ public class DriveMe extends JFrame{
             carRepository = gson.fromJson(br, CarRepository.class);
         } catch (FileNotFoundException e) {
             System.out.println("No save file to read from. It will be made when this application closes.");
-        }catch (IOException e) {
-            e.printStackTrace();
         }
 
         this.addWindowListener(new WindowAdapter() {
@@ -103,6 +101,7 @@ public class DriveMe extends JFrame{
 
 
 
+
                     if (rented.isSelected()) {
                         registeredCar.setRented(true);
 
@@ -110,15 +109,18 @@ public class DriveMe extends JFrame{
                         registeredCar.setRented(false);
                     }
 
+                    if(registrationNField.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(registerCarPanel, "Please do not enter an empty registration number");
+                    }
+                    else {
+                        carRepository.addCar(registeredCar);
+                        carListModel.addElement(registeredCar);
+                        JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
 
-
-                    carRepository.addCar(registeredCar);
-                    carListModel.addElement(registeredCar);
-                    JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
-
-                    registrationNField.setText("");
-                    rented.setSelected(false);
-                    notRented.setSelected(false);
+                        registrationNField.setText("");
+                        rented.setSelected(false);
+                        notRented.setSelected(false);
+                    }
 
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");

@@ -23,7 +23,14 @@
       "isRented": false
     },
     {
-      "registrationNumber": "",
+      "registrationNumber": "gsdfg",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    },
+    {
+      "registrationNumber": "jhfgj",
       "seats": "2",
       "transmissionType": "Manual",
       "engineType": "Diesel",

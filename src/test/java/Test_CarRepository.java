@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import modules.CarRegistration;
 import modules.CarRepository;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,8 @@ public class Test_CarRepository {
         testRepository.addCar(car1);
         testRepository.addCar(car2);
 
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+        Gson gson = gsonBuilder.create();
         String json = gson.toJson(testRepository);
         testRepository.writeToJson(json);
 
