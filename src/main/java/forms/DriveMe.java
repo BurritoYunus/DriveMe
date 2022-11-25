@@ -24,7 +24,7 @@ public class DriveMe extends JFrame{
     private JButton actuallyRegisterCar;
     private JPanel rentCarPanel;
     private JList<CarRegistration> carJList;
-    private JButton checkCar;
+    private JButton rentCarWithVipps;
     private JButton mainMenuButton;
 
     private JComboBox comboBoxSeats;
@@ -52,10 +52,14 @@ public class DriveMe extends JFrame{
     private JCheckBox rentedCheckBox;
     private JCheckBox notRentedCheckBox;
     private JButton logOutButton;
+    private JButton rentCarWithCard;
 
-    CarRepository testRepository = new CarRepository("CarList");
+    CarRepository carRepository = new CarRepository("carList.json");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
     Gson gson = new Gson();
+
+    File file = new File("carList.json");
+    //CarListFileHandler CarFileHandler = new CarListFileHandler();
 
     public DriveMe(String title) {
         super(title);
@@ -63,10 +67,11 @@ public class DriveMe extends JFrame{
         this.setContentPane(mainPanel);
         this.pack();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        //carRepository.readListFromJSON();
         try {
             BufferedReader br = new BufferedReader(
-                    new FileReader("carList.json"));
-            testRepository = gson.fromJson(br, CarRepository.class);
+                    new FileReader(file));
+            carRepository = gson.fromJson(br, CarRepository.class);
         } catch (FileNotFoundException e) {
             System.out.println("No save file to read from. It will be made when this application closes.");
         }catch (IOException e) {
@@ -104,27 +109,39 @@ public class DriveMe extends JFrame{
                         registeredCar.setRented(false);
                     }
 
-                    testRepository.addCar(registeredCar);
+                    carRepository.addCar(registeredCar);
                     carListModel.addElement(registeredCar);
                     JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
 
                     registrationNField.setText("");
                     rented.setSelected(false);
                     notRented.setSelected(false);
+
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
                 }
             }
         });
 
-        checkCar.addActionListener(new ActionListener() {
+        rentCarWithVipps.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarRegistration selectedCar = carJList.getSelectedValue();
                 selectedCar.setRented(true);
-                JOptionPane.showMessageDialog(rentCarPanel, "You have just rented car with the registration number: " + selectedCar.getRegistrationNumber());
+                JOptionPane.showMessageDialog(rentCarPanel, "You have successfully rented the car with the registration number: " + selectedCar.getRegistrationNumber() + ", with vipps");
 
-                all_Cars_List(testRepository.getAllAvailableCars());
+                all_Cars_List(carRepository.getAllAvailableCars());
+            }
+        });
+
+        rentCarWithCard.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CarRegistration selectedCar = carJList.getSelectedValue();
+                selectedCar.setRented(true);
+                JOptionPane.showMessageDialog(rentCarPanel, "You have successfully rented the car with the registration number: " + selectedCar.getRegistrationNumber() + ", with a card");
+
+                all_Cars_List(carRepository.getAllAvailableCars());
             }
         });
 
@@ -137,7 +154,7 @@ public class DriveMe extends JFrame{
                 parentPanel.repaint();
                 parentPanel.revalidate();
 
-                all_Cars_List(testRepository.getCarArrayList());
+                all_Cars_List(carRepository.getCarArrayList());
             }
         });
         editCarPageButton.addActionListener(new ActionListener() {
@@ -161,13 +178,13 @@ public class DriveMe extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 CarRegistration selectedCar = (CarRegistration) adminList.getSelectedValue();
-                testRepository.removeCar(selectedCar);
+                carRepository.removeCar(selectedCar);
                 carListModel.removeElement(selectedCar);
 
                 JOptionPane.showMessageDialog(adminListPanel, "Successfully removed car with the registration number:" + selectedCar.getRegistrationNumber());
 
 
-                all_Cars_List(testRepository.getCarArrayList());
+                all_Cars_List(carRepository.getCarArrayList());
             }
         });
 
@@ -234,7 +251,7 @@ public class DriveMe extends JFrame{
                 parentPanel.repaint();
                 parentPanel.revalidate();
 
-                all_Cars_List(testRepository.getAllAvailableCars());
+                all_Cars_List(carRepository.getAllAvailableCars());
             }
         });
 
@@ -255,7 +272,7 @@ public class DriveMe extends JFrame{
                 parentPanel.repaint();
                 parentPanel.revalidate();
 
-                all_Cars_List(testRepository.getCarArrayList());
+                all_Cars_List(carRepository.getCarArrayList());
             }
         });
 
@@ -330,7 +347,8 @@ public class DriveMe extends JFrame{
     }
 
     public void exitProcedure( ) {
-        String json = gson.toJson(testRepository);
+        //carRepository.saveListToJSON();
+        String json = gson.toJson(carRepository);
         try {
             FileWriter writer = new FileWriter("carList.json");
             writer.write(json);

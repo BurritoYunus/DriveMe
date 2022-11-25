@@ -14,9 +14,7 @@ public class CarRegistration {
         this.engineType = engineType;
     }
 
-
     public boolean isRented() {
-
         return isRented;
     }
 
