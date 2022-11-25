@@ -1,6 +1,7 @@
 package forms;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import modules.CarRegistration;
 import modules.CarRepository;
 
@@ -56,8 +57,8 @@ public class DriveMe extends JFrame{
 
     CarRepository carRepository = new CarRepository("carList.json");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
-    Gson gson = new Gson();
-
+    GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+    Gson gson = gsonBuilder.create();
     File file = new File("carList.json");
 
     public DriveMe(String title) {
