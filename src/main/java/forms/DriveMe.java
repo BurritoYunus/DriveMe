@@ -59,7 +59,6 @@ public class DriveMe extends JFrame{
     Gson gson = new Gson();
 
     File file = new File("carList.json");
-    //CarListFileHandler CarFileHandler = new CarListFileHandler();
 
     public DriveMe(String title) {
         super(title);
@@ -67,7 +66,6 @@ public class DriveMe extends JFrame{
         this.setContentPane(mainPanel);
         this.pack();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        //carRepository.readListFromJSON();
         try {
             BufferedReader br = new BufferedReader(
                     new FileReader(file));
@@ -347,7 +345,6 @@ public class DriveMe extends JFrame{
     }
 
     public void exitProcedure( ) {
-        //carRepository.saveListToJSON();
         String json = gson.toJson(carRepository);
         try {
             FileWriter writer = new FileWriter("carList.json");
