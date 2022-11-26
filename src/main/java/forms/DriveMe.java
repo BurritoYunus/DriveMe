@@ -1,6 +1,7 @@
 package forms;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import modules.CarRegistration;
 import modules.CarRepository;
 
@@ -56,10 +57,9 @@ public class DriveMe extends JFrame{
 
     CarRepository carRepository = new CarRepository("carList.json");
     private DefaultListModel<CarRegistration> carListModel = new DefaultListModel<>();
-    Gson gson = new Gson();
-
-    File file = new File("carList.json");
-    //CarListFileHandler CarFileHandler = new CarListFileHandler();
+    GsonBuilder gsonBuilder = new GsonBuilder().setPrettyPrinting();
+    Gson gson = gsonBuilder.create();
+    File file = new File(carRepository.getRepositoryName());
 
     public DriveMe(String title) {
         super(title);
@@ -67,15 +67,12 @@ public class DriveMe extends JFrame{
         this.setContentPane(mainPanel);
         this.pack();
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        //carRepository.readListFromJSON();
         try {
             BufferedReader br = new BufferedReader(
                     new FileReader(file));
             carRepository = gson.fromJson(br, CarRepository.class);
         } catch (FileNotFoundException e) {
             System.out.println("No save file to read from. It will be made when this application closes.");
-        }catch (IOException e) {
-            e.printStackTrace();
         }
 
         this.addWindowListener(new WindowAdapter() {
@@ -95,13 +92,16 @@ public class DriveMe extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     String registrationNumber = registrationNField.getText();
                     String selectedValueSeats = comboBoxSeats.getSelectedItem().toString();
                     String selectedValueTType = comboBoxTType.getSelectedItem().toString();
                     String selectedValueEType = comboBoxEType.getSelectedItem().toString();
 
                     CarRegistration registeredCar = new CarRegistration(registrationNumber, selectedValueSeats, selectedValueTType, selectedValueEType);
+
+
+
+
                     if (rented.isSelected()) {
                         registeredCar.setRented(true);
 
@@ -109,13 +109,18 @@ public class DriveMe extends JFrame{
                         registeredCar.setRented(false);
                     }
 
-                    carRepository.addCar(registeredCar);
-                    carListModel.addElement(registeredCar);
-                    JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
+                    if(registrationNField.getText().isEmpty()){
+                        JOptionPane.showMessageDialog(registerCarPanel, "Please do not enter an empty registration number");
+                    }
+                    else {
+                        carRepository.addCar(registeredCar);
+                        carListModel.addElement(registeredCar);
+                        JOptionPane.showMessageDialog(registerCarPanel, "You have just registered the car with registration number: " + registeredCar.getRegistrationNumber());
 
-                    registrationNField.setText("");
-                    rented.setSelected(false);
-                    notRented.setSelected(false);
+                        registrationNField.setText("");
+                        rented.setSelected(false);
+                        notRented.setSelected(false);
+                    }
 
                 } catch (NumberFormatException numberFormatException) {
                     JOptionPane.showMessageDialog(null, "You must input valid numbers.");
@@ -347,8 +352,7 @@ public class DriveMe extends JFrame{
     }
 
     public void exitProcedure( ) {
-        //carRepository.saveListToJSON();
-        String json = gson.toJson(carRepository);
+       /* String json = gson.toJson(carRepository);
         try {
             FileWriter writer = new FileWriter("carList.json");
             writer.write(json);
@@ -356,7 +360,9 @@ public class DriveMe extends JFrame{
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+        String json = gson.toJson(carRepository);
+        carRepository.writeToJson(json);
         this.dispose();
         System.exit(0);
     }
