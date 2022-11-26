@@ -1,1 +1,40 @@
-{"repositoryName":"test_repository.json","carList":[]}
+{
+  "repositoryName": "carList.json",
+  "carList": [
+    {
+      "registrationNumber": "test",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": true
+    },
+    {
+      "registrationNumber": "tret",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    },
+    {
+      "registrationNumber": "sdfgsdfg",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    },
+    {
+      "registrationNumber": "gsdfg",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": true
+    },
+    {
+      "registrationNumber": "jhfgj",
+      "seats": "2",
+      "transmissionType": "Manual",
+      "engineType": "Diesel",
+      "isRented": false
+    }
+  ]
+}
