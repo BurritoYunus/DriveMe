@@ -34,7 +34,7 @@
       "seats": "2",
       "transmissionType": "Manual",
       "engineType": "Diesel",
-      "isRented": false
+      "isRented": true
     }
   ]
 }
