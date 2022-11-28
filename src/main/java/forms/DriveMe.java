@@ -352,15 +352,6 @@ public class DriveMe extends JFrame{
     }
 
     public void exitProcedure( ) {
-       /* String json = gson.toJson(carRepository);
-        try {
-            FileWriter writer = new FileWriter("carList.json");
-            writer.write(json);
-            writer.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }*/
         String json = gson.toJson(carRepository);
         carRepository.writeToJson(json);
         this.dispose();
