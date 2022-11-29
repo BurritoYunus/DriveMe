@@ -1,9 +1,5 @@
-import com.google.gson.Gson;
 import modules.CarRegistration;
-import modules.CarRepository;
 import org.junit.jupiter.api.Test;
-
-import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
